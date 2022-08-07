@@ -3,6 +3,7 @@ import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { SongMintingParamsStruct, SongRegNFT } from "../typechain-types/contracts/SongRegNFT";
+import chai from "chai";
 
 describe("Composition", () => {
 
@@ -67,6 +68,6 @@ describe("Composition", () => {
       const compToken =  CompositionRoyaltyToken.attach(params.compToken.tokenAddress);
       const recToken = RecordingRoyaltyToken.attach(params.recToken.tokenAddress);
 
-      expect((compToken.parentSong()).to
+      expect(await compToken.parentSong()).to.eq(song.address)
     });
   });
