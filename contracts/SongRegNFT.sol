@@ -8,7 +8,6 @@ import "./Structs.sol";
 
 
 contract SongRegNFT is ERC721 {
-    using Counters for Counters.Counter;
     event Minted(
         string  title,
         string indexed iscc,
@@ -17,23 +16,23 @@ contract SongRegNFT is ERC721 {
         address owner);
     event RightsDistributed(address creator, address owner, uint amount, string kind);
 
+    using Counters for Counters.Counter;
+    Counters.Counter tokenId;
+    SongMintingParams public mintParams;
     string public title;
-    string public shortName;
     address public creator;
     address public owner;
-
     bool private activated =false;
     constructor (
         address _owner,
         address _creator,
-        uint256  _tokenId,
         SongMintingParams memory _params
         )
     ERC721(_params.shortName, _params.symbol){
+        tokenId.increment();
         creator = _creator;
         owner = _owner;
-        _safeMint(_owner, _tokenId);
-        shortName = _params.shortName;
+        _safeMint(_owner, tokenId.current());
         //TODO: handle ISCC
         emit Minted(title,"", address(this),_creator,_owner);
     }
@@ -41,12 +40,12 @@ contract SongRegNFT is ERC721 {
         return activated;
     }
 
-    function Deactivate(BaseMusicRoyaltyToken  _royaltyTokenInfo) public {
-        _royaltyTokenInfo = _royaltyTokenInfo;
+    function Deactivate() public {
+        //TODO - require owner?
         activated=false;
     }
-    function activate(BaseMusicRoyaltyToken  _royaltyTokenInfo) public {
-        _royaltyTokenInfo = _royaltyTokenInfo;
+    function activate() public {
+        //TODO - require owner?
         activated=true;
     }
 
