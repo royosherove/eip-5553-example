@@ -2,7 +2,7 @@
 pragma solidity ^0.8.9;
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
-contract RoyaltyToken is ERC20 {
+contract BaseMusicRoyaltyToken is ERC20 {
     event RoyaltyMinted(address song, uint amount, string kind);
 
     string public kind;
@@ -10,11 +10,10 @@ contract RoyaltyToken is ERC20 {
     constructor (
         address _parentSong,
         address _admin,
-        uint _count,
         string memory _kind,
         string memory _name,
         string memory _symbol) ERC20(_name, _symbol){
-            _mint(_admin,_count);
+            _mint(_admin,100);
             parentSong = _parentSong;
             kind = _kind;
 

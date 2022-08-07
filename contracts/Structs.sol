@@ -1,42 +1,28 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.6;
 
-    struct Dist{
+    struct InitialSplitTarget{
         address holderAddress;
         uint amount;
         string memo;
     }
 
-    struct DistroList{
-        uint writerHoldersCount;
-        uint recordingHoldersCount;
-        //            Dist[] pubRoyalties;
-        Dist[] writerRoyalties;
-        Dist[] recordingRoyalties;
+    struct InitialSplit{
+        InitialSplitTarget[] compositionSplits;
+        InitialSplitTarget[] recordingSplits;
     }
-    struct SingleTokenData{
+    struct RoyaltyTokenData{
         string name;
         string symbol;
-        string memo;
-    }
-    struct AssetData {
-        string name;
-        string location;
+        address tokenAddress;
         string memo;
     }
     struct SongMintingParams{
-        string  title;
-        string  iscc;
-        AssetData audioFull;
-        AssetData audioShort;
-        AssetData image;
-        DistroList royaltyInfo;
-        SingleTokenData stoken;//song token
-        SingleTokenData wtoken; //writer
-        SingleTokenData rtoken; //recording
-    }
-    struct RoyaltyTokenMetadata {
-        address writerTokenAddress;
-        address recordingTokenAddress;
+        string  shortName;
+        string  symbol;
+        string  metadataUri;
+        InitialSplit royaltyInfo;
+        RoyaltyTokenData compToken; 
+        RoyaltyTokenData recToken; 
     }
 
