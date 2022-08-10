@@ -15,7 +15,7 @@ contract BaseMusicRoyaltyToken is ERC20 {
         string memory _symbol) ERC20(_name, _symbol){
             ledger = _ledger;
             kind = _kind;
-            _mint(_ledger,100);
+            _mint(_ledger,100 * 10 **18);
 
     }
     function bindToSong(address _song) public {

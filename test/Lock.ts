@@ -4,7 +4,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { SongMintingParamsStruct, SongRegNFT } from "../typechain-types/contracts/SongRegNFT";
 import chai from "chai";
-import { CompositionRoyaltyToken, RecordingRoyaltyToken, SongRegNFT__factory } from "../typechain-types";
+import { BaseMusicRoyaltyToken__factory, CompositionRoyaltyToken, RecordingRoyaltyToken, SongRegNFT__factory } from "../typechain-types";
 
 describe("Composition", () => {
 
@@ -70,12 +70,20 @@ describe("Composition", () => {
           symbol: "SHORT",
           metadataUri: "uri",
           splits:{
-            compSplits:[],
-            recSplits:[]
+            compSplits:[
+              { holderAddress: accounts[2].address, amount: 30, memo:"writer1" },
+              { holderAddress: accounts[3].address, amount: 70, memo:"writer2" },
+          ],
+            recSplits:[
+              { holderAddress: accounts[2].address, amount: 10, memo:"mastering" },
+              { holderAddress: accounts[3].address, amount: 40, memo:"producer" },
+              { holderAddress: accounts[4].address, amount: 50, memo:"singer" },
+            ]
           } ,
       }
-      const songRegNftType = await ethers.getContractFactory("SongRegNFT");
-      await deployedLedger.mintSong(mintParams);
+      // const songRegNftType = await ethers.getContractFactory("SongRegNFT");
+      // await deployedLedger.mintSong(mintParams);
+      await expect(deployedLedger.mintSong(mintParams)).to.emit(deployedLedger,"NewSong");
       // const params = await song.mintParams()
 
       // expect(await song.title()).to.eq("shortName")
