@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.6;
 
-    struct InitialSplitTarget{
+    struct SplitTarget{
         address holderAddress;
         uint amount;
         string memo;
     }
 
-    struct InitialSplit{
-        InitialSplitTarget[] compositionSplits;
-        InitialSplitTarget[] recordingSplits;
+    struct SplitInfo{
+        SplitTarget[] compSplits;
+        SplitTarget[] recSplits;
     }
     struct RoyaltyTokenData{
         string name;
@@ -17,12 +17,10 @@ pragma solidity ^0.8.6;
         address tokenAddress;
         string memo;
     }
-    struct SongMintingParams{
+    struct  SongMintingParams{
         string  shortName;
         string  symbol;
         string  metadataUri;
-        InitialSplit royaltyInfo;
-        RoyaltyTokenData compToken; 
-        RoyaltyTokenData recToken; 
+        SplitInfo splits;
     }
 

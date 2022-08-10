@@ -8,44 +8,67 @@ import "./Structs.sol";
 
 
 contract SongRegNFT is ERC721 {
-    event Minted(
-        string  title,
-        string indexed iscc,
-        address indexed songAddress,
-        address indexed creator,
-        address owner);
-    event RightsDistributed(address creator, address owner, uint amount, string kind);
+    address public songLedger;
+    address public compToken;
+    address public recToken;
+    string public metadataUri;
+    uint256 public tokenId;
+    bool public activated =false;
 
-    using Counters for Counters.Counter;
-    Counters.Counter tokenId;
-    SongMintingParams public mintParams;
-    string public title;
-    address public creator;
-    address public owner;
-    bool private activated =false;
     constructor (
-        address _owner,
-        address _creator,
-        SongMintingParams memory _params
+        uint256 _tokenId,
+        address _songLedger,
+        SongMintingParams memory _params,
+        address _compAddress,
+        address _recAddress
         )
     ERC721(_params.shortName, _params.symbol){
-        tokenId.increment();
-        creator = _creator;
-        owner = _owner;
-        _safeMint(_owner, tokenId.current());
-        //TODO: handle ISCC
-        emit Minted(title,"", address(this),_creator,_owner);
-    }
-    function isActive() public view returns (bool){
-        return activated;
+
+        songLedger = _songLedger;
+        compToken = _compAddress;
+        recToken = _recAddress;
+        metadataUri = _params.metadataUri;
+        tokenId = _tokenId;
+        
+        _safeMint(_songLedger, _tokenId);
+        emit Minted(_params.shortName,_songLedger,_compAddress,_recAddress,_msgSender(),tokenId,_params.metadataUri);
     }
 
-    function Deactivate() public {
-        //TODO - require owner?
+    function changeUri(string memory _newUri) public 
+    onlyLedger {
+        metadataUri = _newUri; 
+        
+        emit UriChanged(_newUri);
+    }
+    
+    function tokenUri() public view returns (string memory){
+       return metadataUri;
+    }
+
+    event UriChanged(
+        string  newUri
+        );
+    event Minted(
+        string  abbvName,
+        address ledger,
+        address compToken,
+        address recToken,
+        address creator,
+        uint256 tokenId,
+        string metadataUri
+        );
+
+    modifier onlyLedger {
+        require( _msgSender() == songLedger, "Operation requires ledger contract");
+        _;
+    }
+
+    function Deactivate() public
+    onlyLedger {
         activated=false;
     }
-    function activate() public {
-        //TODO - require owner?
+    function activate() public 
+    onlyLedger {
         activated=true;
     }
 
