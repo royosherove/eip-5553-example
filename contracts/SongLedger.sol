@@ -60,6 +60,25 @@ contract SongLedger is IERC721Receiver {
 
     //     return tokens;
     // }
+        function distribute(
+        address _tokenAddress,
+        SplitTarget[] memory _targets,
+        address _songAddress
+    ) private {
+        for(uint i=0; i< _targets.length;i++){
+            //TODO: Check length, hacker could provide wrong target length in params
+            SplitTarget memory targetInfo = _targets[i];
+            BaseMusicRoyaltyToken token = BaseMusicRoyaltyToken(_tokenAddress);
+            token.transfer(targetInfo.holderAddress, targetInfo.amount * 10**18);
+            emit RoyaltyTokenDistributed(
+                _songAddress,
+                token.getKind(),
+                _tokenAddress,
+                targetInfo.amount * 10**18,
+                targetInfo.holderAddress
+            );
+        }
+    }
 
     function mintSong(SongMintingParams memory _params) public onlyOwner {
         string memory compName = string(abi.encode("Composition Royalties for ",_params.shortName));
@@ -81,6 +100,12 @@ contract SongLedger is IERC721Receiver {
                                         address(comp),
                                         address(rec)
                                     );
+
+        comp.bindToSong(address(newSong));
+        distribute(address(comp),_params.splits.compSplits,address(newSong));
+        
+        rec.bindToSong(address(newSong));
+        distribute(address(rec),_params.splits.recSplits,address(newSong));
 
         // songInitialRoyalties[address(newSong)] = _params.royaltyInfo;
     }

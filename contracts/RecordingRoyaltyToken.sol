@@ -4,8 +4,8 @@ pragma solidity ^0.8.9;
 import "./BaseMusicRoyaltyToken.sol";
 
 contract RecordingRoyaltyToken is BaseMusicRoyaltyToken {
-    constructor (address _admin,string memory _name,string memory _symbol)
-    BaseMusicRoyaltyToken(_admin, 'recording',_name,_symbol){
+    constructor (address _ledger,string memory _name,string memory _symbol)
+    BaseMusicRoyaltyToken(_ledger, 'recording',_name,_symbol){
     }
 }
 

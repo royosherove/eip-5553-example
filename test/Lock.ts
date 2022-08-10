@@ -4,7 +4,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { SongMintingParamsStruct, SongRegNFT } from "../typechain-types/contracts/SongRegNFT";
 import chai from "chai";
-import { CompositionRoyaltyToken, RecordingRoyaltyToken } from "../typechain-types";
+import { CompositionRoyaltyToken, RecordingRoyaltyToken, SongRegNFT__factory } from "../typechain-types";
 
 describe("Composition", () => {
 
@@ -74,6 +74,7 @@ describe("Composition", () => {
             recSplits:[]
           } ,
       }
+      const songRegNftType = await ethers.getContractFactory("SongRegNFT");
       await deployedLedger.mintSong(mintParams);
       // const params = await song.mintParams()
 
