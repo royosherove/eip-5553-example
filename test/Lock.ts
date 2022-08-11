@@ -10,22 +10,22 @@ const check = require("./check.js");
 describe("Composition", () => {
 
     it("can deploy song with composition and recording tokens", async function () {
-      const accounts = await ethers.getSigners();
+      const [acc0,acc1,acc2,acc3,acc4] = await ethers.getSigners();
       const songLedger = await ethers.getContractFactory("SongLedger");
-      const deployedLedger = await songLedger.deploy(accounts[0].address);
+      const deployedLedger = await songLedger.deploy(acc0.address);
       const mintParams:SongMintingParamsStruct = {
           shortName: "shortName",
           symbol: "SHORT",
           metadataUri: "uri",
           splits:{
             compSplits:[
-              { holderAddress: accounts[2].address, amount: 30, memo:"writer1" },
-              { holderAddress: accounts[3].address, amount: 70, memo:"writer2" },
+              { holderAddress: acc2.address, amount: 30, memo:"writer1" },
+              { holderAddress: acc3.address, amount: 70, memo:"writer2" },
           ],
             recSplits:[
-              { holderAddress: accounts[2].address, amount: 10, memo:"mastering" },
-              { holderAddress: accounts[3].address, amount: 40, memo:"producer" },
-              { holderAddress: accounts[4].address, amount: 50, memo:"singer" },
+              { holderAddress: acc2.address, amount: 10, memo:"mastering" },
+              { holderAddress: acc3.address, amount: 40, memo:"producer" },
+              { holderAddress: acc4.address, amount: 50, memo:"singer" },
             ]
           } ,
       }
@@ -39,27 +39,39 @@ describe("Composition", () => {
       const compAddress = evs[0].args.compToken;
       const recAddress = evs[0].args.recToken;
 
-      const songContract = SongRegNFT__factory.connect(songAddress,accounts[0]);
-      const compContract = CompositionRoyaltyToken__factory.connect(compAddress,accounts[0]);
-      const recContract = RecordingRoyaltyToken__factory.connect(recAddress,accounts[0]);
+      const songContract = SongRegNFT__factory.connect(songAddress,acc0);
+      const compContract = CompositionRoyaltyToken__factory.connect(compAddress,acc0);
+      const recContract = RecordingRoyaltyToken__factory.connect(recAddress,acc0);
 
+      //song initial data
+      expect(await songContract.songLedger()).to.eq(deployedLedger.address);
+      expect(await songContract.metadataUri()).to.eq("uri");
+      expect(await songContract.name()).to.eq("shortName");
+      expect(await songContract.symbol()).to.eq("SHORT");
+      expect(await songContract.tokenId()).to.eq(1);
+      
       //song points to rec and comp tokens
-      await expect(await songContract.compToken()).to.eq(compAddress);
-      await expect(await songContract.recToken()).to.eq(recAddress);
+      expect(await songContract.compToken()).to.eq(compAddress);
+      expect(await songContract.recToken()).to.eq(recAddress);
       
       //tokens point to song
-      await expect(await compContract.parentSong()).to.eq(songAddress);
-      await expect(await recContract.parentSong()).to.eq(songAddress);
+      expect(await compContract.parentSong()).to.eq(songAddress);
+      expect(await recContract.parentSong()).to.eq(songAddress);
 
-      await expect(await recContract.balanceOf(accounts[2].address)).to.eq(ethers.BigNumber.from((30*10**18).toString()));
+      //token composition splits initial balances
+      expect(await compContract.balanceOf(acc2.address)).to.eq(toWei(30));
+      expect(await compContract.balanceOf(acc3.address)).to.eq(toWei(70));
+
+      //token recording splits initial balances
+      expect(await recContract.balanceOf(acc2.address)).to.eq(toWei(10));
+      expect(await recContract.balanceOf(acc3.address)).to.eq(toWei(40));
+      expect(await recContract.balanceOf(acc4.address)).to.eq(toWei(50));
 
       
 
     });
   });
 
-async function getInstanceOf(contractName:string, deployedAddress: string) {
-  const compContract = await ethers.getContractFactory(contractName);
-  const compInstance = await compContract.attach(deployedAddress);
-}
+const toWei = (num:number): any => ethers.BigNumber.from((num * 10 ** 18).toString());
+
 
