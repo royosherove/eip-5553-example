@@ -1,67 +1,15 @@
-import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { SongMintingParamsStruct, SongRegNFT } from "../typechain-types/contracts/SongRegNFT";
+import { SongMintingParamsStruct  } from "../typechain-types/contracts/SongRegNFT";
+import { CompositionRoyaltyToken,RecordingRoyaltyToken,RecordingRoyaltyToken__factory,SongRegNFT, SongRegNFT__factory } from "../typechain-types";
+import { NewSongEvent, SongLedger } from "../typechain-types/contracts/SongLedger";
 import chai from "chai";
-import { BaseMusicRoyaltyToken__factory, CompositionRoyaltyToken, RecordingRoyaltyToken, SongRegNFT__factory } from "../typechain-types";
+import { CompositionRoyaltyToken__factory } from "../typechain-types";
+const check = require("./check.js");
 
 describe("Composition", () => {
 
-    // We define a fixture to reuse the same setup in every test.
-    // We use loadFixture to run this setup once, snapshot that state,
-    // and reset Hardhat Network to that snapshopt in every test.
-    // async function deploySong(){
-    //   const [owner, otherAccount] = await ethers.getSigners();
-
-    //   const CompositionRoyaltyToken = await ethers.getContractFactory("CompositionRoyaltyToken");
-    //   const compToken = await CompositionRoyaltyToken.deploy(owner.address, "compToken", "Comp1");
-    //   const compTokenDeployed = await compToken.deployed()
-
-    //   const RecordingRoyaltyToken = await ethers.getContractFactory("RecordingRoyaltyToken");
-    //   const recToken = await RecordingRoyaltyToken.deploy(owner.address, "recToken", "Rec1");
-    //   const recTokenDeployed = await recToken.deployed();
-
-    //   const SongRegNFT = await ethers.getContractFactory("SongRegNFT");
-    //   const songMintingParams: SongMintingParamsStruct = {
-    //     shortName: "shortName",
-    //     metadataUri: "",
-    //     symbol: "",
-    //     compToken: {
-    //       name: compTokenDeployed.name(),
-    //       symbol: compTokenDeployed.symbol(),
-    //       tokenAddress: compTokenDeployed.address,
-    //       memo: "memo composition",
-    //     },
-    //     recToken: {
-    //       name: recTokenDeployed.name(),
-    //       symbol: recTokenDeployed.symbol(),
-    //       tokenAddress: recTokenDeployed.address,
-    //       memo: "memo recording",
-    //     },
-    //     royaltyInfo: {
-    //       compositionSplits: [
-    //         { holderAddress: owner.address, amount: 50, memo: "" },
-    //         { holderAddress: otherAccount.address, amount: 50, memo: "" },
-    //       ],
-    //       recordingSplits: [
-    //         { holderAddress: owner.address, amount: 80, memo: "" },
-    //         { holderAddress: otherAccount.address, amount: 20, memo: "" },
-    //       ],
-    //     },
-    //   };
-
-    //   const song = await SongRegNFT.deploy(
-    //     owner.address,
-    //     owner.address,
-    //     songMintingParams
-    //   );
-
-    //   return {song,compToken,recToken};
-
-    // }
-
-    it("deploy song with composition and recording tokens", async function () {
+    it("can deploy song with composition and recording tokens", async function () {
       const accounts = await ethers.getSigners();
       const songLedger = await ethers.getContractFactory("SongLedger");
       const deployedLedger = await songLedger.deploy(accounts[0].address);
@@ -81,13 +29,37 @@ describe("Composition", () => {
             ]
           } ,
       }
-      // const songRegNftType = await ethers.getContractFactory("SongRegNFT");
-      // await deployedLedger.mintSong(mintParams);
-      await expect(deployedLedger.mintSong(mintParams)).to.emit(deployedLedger,"NewSong");
-      // const params = await song.mintParams()
+      await expect(deployedLedger.mintSong(mintParams))
+      .to.emit(deployedLedger,"NewSong");
 
-      // expect(await song.title()).to.eq("shortName")
-      // expect( compToken.address).to.eq(params.compToken.tokenAddress)
-      // expect(await compToken.parentSong()).to.eq(song.address)
+      const filter = deployedLedger.filters.NewSong();
+
+      const evs = await deployedLedger.queryFilter(filter,0,"latest") as NewSongEvent[];
+      const songAddress = evs[0].args.songAddress;
+      const compAddress = evs[0].args.compToken;
+      const recAddress = evs[0].args.recToken;
+
+      const songContract = SongRegNFT__factory.connect(songAddress,accounts[0]);
+      const compContract = CompositionRoyaltyToken__factory.connect(compAddress,accounts[0]);
+      const recContract = RecordingRoyaltyToken__factory.connect(recAddress,accounts[0]);
+
+      //song points to rec and comp tokens
+      await expect(await songContract.compToken()).to.eq(compAddress);
+      await expect(await songContract.recToken()).to.eq(recAddress);
+      
+      //tokens point to song
+      await expect(await compContract.parentSong()).to.eq(songAddress);
+      await expect(await recContract.parentSong()).to.eq(songAddress);
+
+      await expect(await recContract.balanceOf(accounts[2].address)).to.eq(ethers.BigNumber.from((30*10**18).toString()));
+
+      
+
     });
   });
+
+async function getInstanceOf(contractName:string, deployedAddress: string) {
+  const compContract = await ethers.getContractFactory(contractName);
+  const compInstance = await compContract.attach(deployedAddress);
+}
+
