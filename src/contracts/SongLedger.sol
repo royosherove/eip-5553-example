@@ -4,7 +4,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./Structs.sol";
 import "./BaseMusicRoyaltyToken.sol";
-import "./SongRegNFT.sol";
+import "./SongRegistration.sol";
 import "./CompositionRoyaltyToken.sol";
 import "./RecordingRoyaltyToken.sol";
 import "./Structs.sol";
@@ -46,7 +46,7 @@ contract SongLedger is IERC721Receiver {
         songIds.increment();
         uint256 newId = songIds.current();
 
-        SongRegNFT newSong = new SongRegNFT(
+        SongRegistration newSong = new SongRegistration(
                                         newId,
                                         address(this),
                                         _params,

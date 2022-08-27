@@ -8,7 +8,7 @@ import "./Structs.sol";
 import "./IWorksRegistration.sol";
 
 
-contract SongRegNFT is ERC721, IWorksRegistration {
+contract SongRegistration is ERC721, IWorksRegistration {
     address public songLedger;
     address public compToken;
     address public recToken;
@@ -36,7 +36,7 @@ contract SongRegNFT is ERC721, IWorksRegistration {
     }
 
     function changeMetadataURI(string memory _newUri,string memory _newFileHash) public 
-    onlyLedger {
+     {
         metadataUri = _newUri; 
         
         emit MetadataChanged("","",_newUri,"");
