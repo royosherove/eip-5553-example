@@ -5,9 +5,10 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "./Structs.sol";
 import "./BaseMusicRoyaltyToken.sol";
 import "./Structs.sol";
+import "./IWorksRegistration.sol";
 
 
-contract SongRegNFT is ERC721 {
+contract SongRegNFT is ERC721, IWorksRegistration {
     address public songLedger;
     address public compToken;
     address public recToken;
@@ -34,19 +35,29 @@ contract SongRegNFT is ERC721 {
         emit Minted(_params.shortName,_songLedger,_compAddress,_recAddress,_msgSender(),tokenId,_params.metadataUri);
     }
 
-    function changeUri(string memory _newUri) public 
+    function changeMetadataURI(string memory _newUri,string memory _newFileHash) public 
     onlyLedger {
         metadataUri = _newUri; 
         
-        emit UriChanged(_newUri);
+        emit MetadataChanged("","",_newUri,"");
     }
     
-    function tokenUri() public view returns (string memory){
+    function metadataURI() public view returns (string memory){
        return metadataUri;
     }
+    function royaltyTokens() external view returns (address[] memory) {
+        address[] memory items = new address[](2); 
+        items[0] = compToken;
+        items[1] = recToken;
+        return items;
+    }
+    function ledger() external view returns (address) {
+         return songLedger;
+    }
 
-    event UriChanged(
-        string  newUri
+    event MetadataChanged(
+        string  oldUri, string oldFileHash,
+        string  newUri, string newFileHash
         );
     event Minted(
         string  abbvName,
