@@ -49,8 +49,13 @@ describe("Composition", () => {
       //ledger()
       expect(await songInstance.ledger()).to.eq(deployedLedger.address);
       
-      //royaltyTokens()
-      const foundTokens = await songInstance.royaltyTokens();
+      //supportsInterface()
+      const interfaceIdNeeded = await songInstance.getInterfaceId();
+      expect(interfaceIdNeeded).to.eq('0x29098286');
+      console.log("INTERFACE ID: ", interfaceIdNeeded)
+      expect(await songInstance.supportsInterface(interfaceIdNeeded)).to.be.true;
+      //royaltyInterestTokens()
+      const foundTokens = await songInstance.royaltyInterestTokens();
       expect(foundTokens).to.contain(recAddress);
       expect(foundTokens).to.contain(compAddress);
       expect(foundTokens.length).to.eq(2);

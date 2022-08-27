@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "./Structs.sol";
 import "./BaseMusicRoyaltyToken.sol";
 import "./Structs.sol";
-import "./IWorksRegistration.sol";
+import "./interfaces/IWorksRegistration.sol";
 
 
 contract SongRegistration is ERC721, IWorksRegistration {
@@ -15,6 +15,16 @@ contract SongRegistration is ERC721, IWorksRegistration {
     string public metadataUri;
     uint256 public tokenId;
     bool public activated =false;
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override( ERC721, IERC165) returns (bool) {
+        return
+            interfaceId == type(IWorksRegistration).interfaceId ||
+            super.supportsInterface(interfaceId);
+    }
+
+    function getInterfaceId() public pure returns (bytes4){
+        return type(IWorksRegistration).interfaceId;
+    }
 
     constructor (
         uint256 _tokenId,
@@ -45,7 +55,7 @@ contract SongRegistration is ERC721, IWorksRegistration {
     function metadataURI() public view returns (string memory){
        return metadataUri;
     }
-    function royaltyTokens() external view returns (address[] memory) {
+    function royaltyInterestTokens() external view returns (address[] memory) {
         address[] memory items = new address[](2); 
         items[0] = compToken;
         items[1] = recToken;
