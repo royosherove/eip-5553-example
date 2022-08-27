@@ -77,7 +77,7 @@ contract SongLedger is IERC721Receiver {
             token.transferFrom(address(this),targetInfo.holderAddress, targetInfo.amount * 10**18);
             emit RoyaltyTokenDistributed(
                 _songAddress,
-                token.getKind(),
+                token.kind(),
                 _tokenAddress,
                 targetInfo.amount * 10**18,
                 targetInfo.holderAddress

@@ -1,9 +1,8 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { SongMintingParamsStruct  } from "../typechain-types/contracts/SongRegNFT";
-import { CompositionRoyaltyToken,RecordingRoyaltyToken,RecordingRoyaltyToken__factory,SongRegNFT, SongRegNFT__factory } from "../typechain-types";
+import { RecordingRoyaltyToken__factory,SongRegistration__factory } from "../typechain-types";
 import { NewSongEvent, SongLedger } from "../typechain-types/contracts/SongLedger";
-import chai from "chai";
 import { CompositionRoyaltyToken__factory } from "../typechain-types";
 const check = require("./check.js");
 
@@ -39,7 +38,7 @@ describe("Composition", () => {
       const compAddress = evs[0].args.compToken;
       const recAddress = evs[0].args.recToken;
 
-      const songInstance = SongRegNFT__factory.connect(songAddress,acc0);
+      const songInstance = SongRegistration__factory.connect(songAddress,acc0);
       const compositionRoyaltyInstance = CompositionRoyaltyToken__factory.connect(compAddress,acc0);
       const recordingRoyaltyInstance = RecordingRoyaltyToken__factory.connect(recAddress,acc0);
 
@@ -76,9 +75,28 @@ describe("Composition", () => {
       expect(await songInstance.compToken()).to.eq(compAddress);
       expect(await songInstance.recToken()).to.eq(recAddress);
       
-      //tokens point to song
-      expect(await compositionRoyaltyInstance.parentSong()).to.eq(songAddress);
-      expect(await recordingRoyaltyInstance.parentSong()).to.eq(songAddress);
+      /////////////////
+      /// IRoyaltyInterestToken functions
+      /////////////////
+      //parentWork() 
+      expect(await compositionRoyaltyInstance.parentWork()).to.eq(songAddress);
+      expect(await recordingRoyaltyInstance.parentWork()).to.eq(songAddress);
+
+      //getHolders()
+      expect((await compositionRoyaltyInstance.getHolders()).length).to.eq(3);
+      expect((await recordingRoyaltyInstance.getHolders()).length).to.eq(4);
+
+      //kind()
+      expect(await compositionRoyaltyInstance.kind()).to.eq('composition');
+      expect(await recordingRoyaltyInstance.kind()).to.eq('recording');
+
+      //ledger()
+      expect(await compositionRoyaltyInstance.ledger()).to.eq(deployedLedger.address);
+      expect(await recordingRoyaltyInstance.ledger()).to.eq(deployedLedger.address);
+
+      //ledger()
+      expect(await compositionRoyaltyInstance.max()).to.eq(100);
+      expect(await recordingRoyaltyInstance.max()).to.eq(100);
 
       //token composition splits initial balances
       expect(await compositionRoyaltyInstance.balanceOf(acc2.address)).to.eq(toWei(30));

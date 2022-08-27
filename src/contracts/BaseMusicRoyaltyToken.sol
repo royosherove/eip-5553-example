@@ -1,13 +1,48 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+import './IRoyaltyInterestToken.sol';
 
-contract BaseMusicRoyaltyToken is ERC20 {
+contract BaseMusicRoyaltyToken is ERC20, IRoyaltyInterestToken {
     event SongBinding(address ledger, address token, address song, uint amount, string kind);
 
+    Balance[]  private holders;
     string public kind;
-    address public parentSong ;
+    address public parentWork ;
     address public ledger ;
+    address public firstHolder ;
+    mapping (address => uint256) addressIndexes;
+
+    function transfer(address to, uint256 amount) override public returns (bool) {
+        bool result = super.transfer(to,amount);
+        require(result, "transfer failed");
+        updateBalances(to);
+        return true;
+    }
+    function updateBalances(address forHolder)  private{
+        if (addressIndexes[forHolder] == 0 && forHolder != firstHolder) {
+            Balance memory b;
+            b.holder = forHolder;
+            b.amount = balanceOf(forHolder);
+            holders.push(b);
+            addressIndexes[forHolder] = holders.length-1;
+            firstHolder = holders[0].holder; // prevents an if at the start of the function and in this line.
+        }else{
+            holders[addressIndexes[forHolder]].amount = balanceOf(forHolder);
+        }
+    }
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) public virtual override returns (bool) {
+        bool result = super.transferFrom(from,to,amount);
+        require(result,"transferFrom failed");
+        updateBalances(from);
+        updateBalances(to);
+        return true;
+    }
+
     constructor (
         address _ledger,
         string memory _kind,
@@ -18,20 +53,24 @@ contract BaseMusicRoyaltyToken is ERC20 {
             _mint(_ledger,100 * 10 **18);
 
     }
+
+    function max() public pure returns (uint256){
+        return 100;
+    }
+    function getHolders() public view returns (Balance[] memory){
+        return holders;
+    }
     function bindToSong(address _song) public {
         require(_msgSender() == ledger, "only ledger allowed to bind");
-        require(parentSong == address(0),"already bound to song" );
+        require(parentWork == address(0),"already bound to song" );
         require(_song != address(0),"invalid song" );
-        parentSong = _song;
+        parentWork = _song;
             emit SongBinding(
                     ledger,
                     address(this), 
-                    parentSong,
+                    parentWork,
                     balanceOf(ledger),
                     kind);
-    }
-    function getKind() public view returns (string memory){
-        return kind;
     }
 }
 
