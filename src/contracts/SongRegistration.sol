@@ -77,24 +77,6 @@ contract SongRegistration is ERC721, IWorksRegistration {
         uint256 tokenId,
         string metadataUri
         );
-
-    modifier onlyLedger {
-        require( _msgSender() == songLedger, "Operation requires ledger contract");
-        _;
-    }
-    
-
-
-
-    function Deactivate() public
-    onlyLedger {
-        activated=false;
-    }
-    function activate() public 
-    onlyLedger {
-        activated=true;
-    }
-
 }
 
 
