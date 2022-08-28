@@ -2,12 +2,11 @@
 pragma solidity ^0.8.9;
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./Structs.sol";
+import "./interfaces/Structs.sol";
 import "./BaseMusicRoyaltyToken.sol";
 import "./SongRegistration.sol";
 import "./CompositionRoyaltyToken.sol";
 import "./RecordingRoyaltyToken.sol";
-import "./Structs.sol";
 
 
 contract SongLedger is IERC721Receiver {
@@ -61,8 +60,6 @@ contract SongLedger is IERC721Receiver {
         distribute(address(rec),_params.splits.recSplits,address(newSong));
 
         emit NewSong(address(newSong), _params.shortName,_params.symbol,address(comp), address(rec), address(this));
-
-        // songInitialRoyalties[address(newSong)] = _params.royaltyInfo;
     }
     function distribute(
             address _tokenAddress,

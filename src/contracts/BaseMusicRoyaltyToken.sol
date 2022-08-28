@@ -6,19 +6,14 @@ import './interfaces/IRoyaltyInterestToken.sol';
 contract BaseMusicRoyaltyToken is ERC20, IRoyaltyInterestToken {
     event SongBinding(address ledger, address token, address song, uint amount, string kind);
 
-    Balance[]  private holders;
     string public kind;
     address public parentWork ;
     address public ledger ;
+    
     address public firstHolder ;
+    Balance[]  private holders;
     mapping (address => uint256) addressIndexes;
 
-    function transfer(address to, uint256 amount) override public returns (bool) {
-        bool result = super.transfer(to,amount);
-        require(result, "transfer failed");
-        updateBalances(to);
-        return true;
-    }
     function updateBalances(address forHolder)  private{
         if (addressIndexes[forHolder] == 0 && forHolder != firstHolder) {
             Balance memory b;
@@ -30,6 +25,12 @@ contract BaseMusicRoyaltyToken is ERC20, IRoyaltyInterestToken {
         }else{
             holders[addressIndexes[forHolder]].amount = balanceOf(forHolder);
         }
+    }
+    function transfer(address to, uint256 amount) override public returns (bool) {
+        bool result = super.transfer(to,amount);
+        require(result, "transfer failed");
+        updateBalances(to);
+        return true;
     }
     function transferFrom(
         address from,
