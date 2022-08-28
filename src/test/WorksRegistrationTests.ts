@@ -1,8 +1,7 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { SongMintingParamsStruct  } from "../typechain-types/contracts/SongRegNFT";
 import { RecordingRoyaltyToken__factory,SongRegistration__factory } from "../typechain-types";
-import { NewSongEvent, SongLedger } from "../typechain-types/contracts/SongLedger";
+import { NewSongEvent, SongMintingParamsStruct } from "../typechain-types/contracts/SongLedger";
 import { CompositionRoyaltyToken__factory } from "../typechain-types";
 const check = require("./check.js");
 
@@ -16,6 +15,7 @@ describe("Composition", () => {
           shortName: "shortName",
           symbol: "SHORT",
           metadataUri: "uri",
+          fileHash: "abc",
           splits:{
             compSplits:[
               { holderAddress: acc2.address, amount: 30, memo:"writer1" },
@@ -61,11 +61,11 @@ describe("Composition", () => {
       expect(foundTokens.length).to.eq(2);
       
       // metadataURI()
-      expect(await songInstance.metadataUri()).to.eq("uri");
+      expect(await songInstance.metadataURI()).to.eq("uri");
 
       // changeMetadataURI()
       await songInstance.changeMetadataURI("uri2","hash");
-      expect(await songInstance.metadataUri()).to.eq("uri2");
+      expect(await songInstance.metadataURI()).to.eq("uri2");
 
       ///////////////////////////////////
       //SongRegistration functions

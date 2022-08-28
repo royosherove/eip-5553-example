@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
-import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./interfaces/Structs.sol";
-import "./BaseMusicRoyaltyToken.sol";
 import "./SongRegistration.sol";
 import "./CompositionRoyaltyToken.sol";
 import "./RecordingRoyaltyToken.sol";

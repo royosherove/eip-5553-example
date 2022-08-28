@@ -23,6 +23,7 @@ pragma solidity ^0.8.6;
     }
     struct  SongMintingParams{
         string  shortName;
+        string  fileHash;
         string  symbol;
         string  metadataUri;
         SplitInfo splits;

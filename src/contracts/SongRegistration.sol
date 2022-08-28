@@ -9,7 +9,8 @@ contract SongRegistration is ERC721, IWorksRegistration {
     address public songLedger;
     address public compToken;
     address public recToken;
-    string public metadataUri;
+    string public metadataURI;
+    string public fileHash;
     uint256 public tokenId;
     bool public activated =false;
 
@@ -35,23 +36,24 @@ contract SongRegistration is ERC721, IWorksRegistration {
         songLedger = _songLedger;
         compToken = _compAddress;
         recToken = _recAddress;
-        metadataUri = _params.metadataUri;
+        metadataURI = _params.metadataUri;
+        fileHash = _params.fileHash;
         tokenId = _tokenId;
         
         _safeMint(_songLedger, _tokenId);
         emit Minted(_params.shortName,_songLedger,_compAddress,_recAddress,_msgSender(),tokenId,_params.metadataUri);
     }
 
-    function changeMetadataURI(string memory _newUri,string memory _newFileHash) public 
+    function changeMetadataURI(string memory _newURI,string memory _newFileHash) public 
      {
-        metadataUri = _newUri; 
+        string memory oldURI = metadataURI;
+        string memory oldHash = fileHash;
+        metadataURI = _newURI; 
+        fileHash = _newFileHash;
         
-        emit MetadataChanged("","",_newUri,"");
+        emit MetadataChanged(oldURI, oldHash,_newURI,_newFileHash);
     }
     
-    function metadataURI() public view returns (string memory){
-       return metadataUri;
-    }
     function royaltyInterestTokens() external view returns (address[] memory) {
         address[] memory items = new address[](2); 
         items[0] = compToken;
