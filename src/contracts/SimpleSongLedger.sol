@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./SongRegistration.sol";
+import "./musical-ip-5553/MusicalIP.sol";
 import "./CompositionRoyaltyToken.sol";
 import "./RecordingRoyaltyToken.sol";
 
@@ -18,12 +18,13 @@ contract SimpleSongLedger is IERC721Receiver {
         RecordingRoyaltyToken rec = new RecordingRoyaltyToken(address(this),"SONGREC","REC");
         songIds.increment();
 
-        SongRegistration newSong = new SongRegistration(
+        MusicalIP newSong = new MusicalIP(
                                         songIds.current(),
                                         address(this),
                                         _params,
                                         address(comp),
-                                        address(rec)
+                                        address(rec),
+                                        "song"
                                     );
     }
 }

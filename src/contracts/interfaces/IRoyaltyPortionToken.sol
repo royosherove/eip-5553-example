@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
-
 import "./Structs.sol";
 
 /// @notice  an ERC20 that acts as a royalty interest token
 /// i.e we can use the holders of this token as a representation of who shoudl get how much % of any future money distribution in a licensing deal, for example
-interface IRoyaltyInterestToken {
+interface IRoyaltyPortionToken {
     /// @notice returns a string representing what kind of ROyalty interest this is. 
     /// i.e in the music business this might be "Recording" or "Composition" royalty interests
     function kind() external view returns (string memory) ;

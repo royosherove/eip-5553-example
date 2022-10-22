@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
-import "./interfaces/IWorksRegistration.sol";
-import "./interfaces/Structs.sol";
+import "./IIPRepresentation.sol";
+import "../interfaces/Structs.sol";
 
 
-contract SongRegistration is ERC721, IWorksRegistration {
+contract MusicalIP is ERC721, IIPRepresentation {
+    string public kind;
     address public songLedger;
     address public compToken;
     address public recToken;
@@ -16,12 +17,12 @@ contract SongRegistration is ERC721, IWorksRegistration {
 
     function supportsInterface(bytes4 interfaceId) public view virtual override( ERC721, IERC165) returns (bool) {
         return
-            interfaceId == type(IWorksRegistration).interfaceId ||
+            interfaceId == type(IIPRepresentation).interfaceId ||
             super.supportsInterface(interfaceId);
     }
 
     function getInterfaceId() public pure returns (bytes4){
-        return type(IWorksRegistration).interfaceId;
+        return type(IIPRepresentation).interfaceId;
     }
 
     constructor (
@@ -29,7 +30,8 @@ contract SongRegistration is ERC721, IWorksRegistration {
         address _songLedger,
         SongMintingParams memory _params,
         address _compAddress,
-        address _recAddress
+        address _recAddress,
+        string memory _kind
         )
     ERC721(_params.shortName, _params.symbol){
 
@@ -39,6 +41,7 @@ contract SongRegistration is ERC721, IWorksRegistration {
         metadataURI = _params.metadataUri;
         fileHash = _params.fileHash;
         tokenId = _tokenId;
+        kind= _kind;
         
         _safeMint(_songLedger, _tokenId);
         emit Minted(_params.shortName,_songLedger,_compAddress,_recAddress,_msgSender(),tokenId,_params.metadataUri);
@@ -54,7 +57,7 @@ contract SongRegistration is ERC721, IWorksRegistration {
         emit MetadataChanged(oldURI, oldHash,_newURI,_newFileHash);
     }
     
-    function royaltyInterestTokens() external view returns (address[] memory) {
+    function royaltyPortionTokens() external view returns (address[] memory) {
         address[] memory items = new address[](2); 
         items[0] = compToken;
         items[1] = recToken;

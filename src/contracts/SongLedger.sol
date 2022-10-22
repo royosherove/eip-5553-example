@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./SongRegistration.sol";
+import "./musical-ip-5553/MusicalIP.sol";
 import "./CompositionRoyaltyToken.sol";
 import "./RecordingRoyaltyToken.sol";
 
@@ -42,12 +42,13 @@ contract SongLedger is IERC721Receiver {
         songIds.increment();
         uint256 newId = songIds.current();
 
-        SongRegistration newSong = new SongRegistration(
+        MusicalIP newSong = new MusicalIP(
                                         newId,
                                         address(this),
                                         _params,
                                         address(comp),
-                                        address(rec)
+                                        address(rec),
+                                        "song"
                                     );
 
         comp.bindToSong(address(newSong));
@@ -64,7 +65,7 @@ contract SongLedger is IERC721Receiver {
             address _songAddress
         ) private  {
 
-        BaseMusicRoyaltyToken token = BaseMusicRoyaltyToken(_tokenAddress);
+        BaseMusicPortionToken token = BaseMusicPortionToken(_tokenAddress);
         for(uint i=0; i< _targets.length;i++){
             SplitTarget memory targetInfo = _targets[i];
             token.increaseAllowance(address(this),targetInfo.amount * 10**18);

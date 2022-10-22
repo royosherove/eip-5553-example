@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { RecordingRoyaltyToken__factory,SongRegistration__factory } from "../typechain-types";
+import { RecordingRoyaltyToken__factory,MusicalIP__factory } from "../typechain-types";
 import { NewSongEvent, SongMintingParamsStruct } from "../typechain-types/contracts/SongLedger";
 import { CompositionRoyaltyToken__factory } from "../typechain-types";
 const check = require("./check.js");
@@ -38,7 +38,7 @@ describe("Composition", () => {
       const compAddress = evs[0].args.compToken;
       const recAddress = evs[0].args.recToken;
 
-      const songInstance = SongRegistration__factory.connect(songAddress,acc0);
+      const songInstance = MusicalIP__factory.connect(songAddress,acc0);
       const compositionRoyaltyInstance = CompositionRoyaltyToken__factory.connect(compAddress,acc0);
       const recordingRoyaltyInstance = RecordingRoyaltyToken__factory.connect(recAddress,acc0);
 
@@ -51,11 +51,11 @@ describe("Composition", () => {
       
       //supportsInterface()
       const interfaceIdNeeded = await songInstance.getInterfaceId();
-      expect(interfaceIdNeeded).to.eq('0x29098286');
+      expect(interfaceIdNeeded).to.eq('0x53c09f68');
       console.log("INTERFACE ID: ", interfaceIdNeeded)
       expect(await songInstance.supportsInterface(interfaceIdNeeded)).to.be.true;
       //royaltyInterestTokens()
-      const foundTokens = await songInstance.royaltyInterestTokens();
+      const foundTokens = await songInstance.royaltyPortionTokens();
       expect(foundTokens).to.contain(recAddress);
       expect(foundTokens).to.contain(compAddress);
       expect(foundTokens.length).to.eq(2);
