@@ -51,7 +51,7 @@ describe("Composition", () => {
       
       //supportsInterface()
       const interfaceIdNeeded = await songInstance.getInterfaceId();
-      expect(interfaceIdNeeded).to.eq('0x53c09f68');
+      expect(interfaceIdNeeded).to.eq('0x03cfe937');
       console.log("INTERFACE ID: ", interfaceIdNeeded)
       expect(await songInstance.supportsInterface(interfaceIdNeeded)).to.be.true;
       //royaltyInterestTokens()
