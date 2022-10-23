@@ -22,7 +22,7 @@ interface IRoyaltyPortionToken {
     /// @dev there is a 1-many relationship between a work and royalty interest tokens
     /// for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side
     /// a royalty interest token can only belong to a single work, and once bound, can never change a parent
-    function parentWork() external view returns (address);
+    function parentIP() external view returns (address);
 
     /// @return an array of Balance structs : Balance {address holder, uint256 amount}
     /// @dev this array represt ALL past and current holders of the ERC20 underlying token,

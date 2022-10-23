@@ -9,7 +9,7 @@ contract BaseMusicPortionToken is ERC20, IRoyaltyPortionToken {
     event HolderAdded(address holder, uint256 amount);
 
     string public kind;
-    address public parentWork;
+    address public parentIP;
     address public ledger;
 
     Balance[] public holders;
@@ -25,7 +25,7 @@ contract BaseMusicPortionToken is ERC20, IRoyaltyPortionToken {
             
             holders.push(Balance({holder:_address,amount:balance}));
             
-            addressLocation[_address] = holders.length-1;//// we do NOT UPDATE ADDRESS INDEXES LATER FOR OTHERS
+            addressLocation[_address] = holders.length-1;
             emit HolderAdded(_address,balance);
         } else {
             holders[addressLocation[_address]].amount = balanceOf(_address);
@@ -66,9 +66,9 @@ contract BaseMusicPortionToken is ERC20, IRoyaltyPortionToken {
 
     function bindToSong(address _song) public {
         require(_msgSender() == ledger, "only ledger allowed to bind");
-        require(parentWork == address(0), "already bound to song");
+        require(parentIP == address(0), "already bound to song");
         require(_song != address(0), "invalid song");
-        parentWork = _song;
-        emit SongBinding(ledger, address(this), parentWork, balanceOf(ledger), kind);
+        parentIP = _song;
+        emit SongBinding(ledger, address(this), parentIP, balanceOf(ledger), kind);
     }
 }

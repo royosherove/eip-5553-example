@@ -84,8 +84,8 @@ describe("Composition", () => {
       /// IRoyaltyInterestToken functions
       /////////////////
       //parentWork() 
-      expect(await compositionRoyaltyInstance.parentWork()).to.eq(songAddress);
-      expect(await recordingRoyaltyInstance.parentWork()).to.eq(songAddress);
+      expect(await compositionRoyaltyInstance.parentIP()).to.eq(songAddress);
+      expect(await recordingRoyaltyInstance.parentIP()).to.eq(songAddress);
 
       //getHolders()
       expect((await compositionRoyaltyInstance.getHolders()).length).to.eq(3);
