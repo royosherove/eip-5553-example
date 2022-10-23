@@ -145,7 +145,7 @@
     "royaltyPortionTokens()": "04f7b05c",
     "supportsInterface(bytes4)": "01ffc9a7"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"byAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"oldURI\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"oldFileHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"newURI\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"newFileHash\",\"type\":\"string\"}],\"name\":\"MetadaDataChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_newUri\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_newFileHash\",\"type\":\"string\"}],\"name\":\"changeMetadataURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"kind\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ledger\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"metadataURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"royaltyPortionTokens\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for Intellectual Property Representation\",\"events\":{\"MetadaDataChanged(address,string,string,string,string)\":{\"details\":\"event to be triggered whenever metadata URI is changed\",\"params\":{\"byAddress\":\"the addresses that triggered this operation\",\"newFileHash\":\"the hash of the new metadata file \",\"newURI\":\"the URI to the new metadata file \",\"oldFileHash\":\"the hash of the old metadata file before the change\",\"oldURI\":\"the URI to the old metadata file before the change\"}}},\"kind\":\"dev\",\"methods\":{\"changeMetadataURI(string,string)\":{\"params\":{\"_newFileHash\":\"- The hash of the new metadata file for future reference and verification\",\"_newUri\":\"- the URI pointing to a metadata file (file standard is up to the implementer)\"}},\"ledger()\":{\"details\":\"i.e., a registry or registrar, to be implemented in the future\",\"returns\":{\"_0\":\"the address of the contract or EOA that initialized the IP registration\"}},\"metadataURI()\":{\"returns\":{\"_0\":\"the URI of the current metadata file for the II P\"}},\"royaltyPortionTokens()\":{\"details\":\"i.e implementing ERC5501 (IRoyaltyInterestToken interface)\",\"returns\":{\"_0\":\"array of addresses of ERC20 tokens representing royalty portion in the IP\"}},\"supportsInterface(bytes4)\":{\"details\":\"Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"changeMetadataURI(string,string)\":{\"notice\":\"Called with the new URI to an updated metadata file\"},\"kind()\":{\"notice\":\"returns the kind of IP represented. i.e 'video', 'audio', 'image' or something else.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/musical-ip-5553/IIPRepresentation.sol\":\"IIPRepresentation\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"contracts/musical-ip-5553/IIPRepresentation.sol\":{\"keccak256\":\"0xed62c6739aef68e499c1757be64137bffba02a66f44c4e1ee22fed4d4e7b2745\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://3cc6bddf5686e98e4e964b6f46ba668dee9869be4e05107cb427ac734458bbd9\",\"dweb:/ipfs/QmVjqKDt2np6At5x2tuszVb1BD5tp8jmGt5VFE2G2SQk4b\"]},\"node_modules/@openzeppelin/contracts/interfaces/IERC165.sol\":{\"keccak256\":\"0xd04b0f06e0666f29cf7cccc82894de541e19bb30a765b107b1e40bb7fe5f7d7a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b652499d098e88d8d878374616bb58434301061cae2253298b3f374044e0ddb\",\"dweb:/ipfs/QmbhAzctqo5jrSKU6idHdVyqfmzCcDbNUPvmx4GiXxfA6q\"]},\"node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"byAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"oldURI\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"oldFileHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"newURI\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"newFileHash\",\"type\":\"string\"}],\"name\":\"MetadaDataChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_newUri\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_newFileHash\",\"type\":\"string\"}],\"name\":\"changeMetadataURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"kind\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ledger\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"metadataURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"royaltyPortionTokens\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for Intellectual Property Representation\",\"events\":{\"MetadaDataChanged(address,string,string,string,string)\":{\"details\":\"event to be triggered whenever metadata URI is changed\",\"params\":{\"byAddress\":\"the addresses that triggered this operation\",\"newFileHash\":\"the hash of the new metadata file\",\"newURI\":\"the URI to the new metadata file\",\"oldFileHash\":\"the hash of the old metadata file before the change\",\"oldURI\":\"the URI to the old metadata file before the change\"}}},\"kind\":\"dev\",\"methods\":{\"changeMetadataURI(string,string)\":{\"params\":{\"_newFileHash\":\"- The hash of the new metadata file for future reference and verification\",\"_newUri\":\"- the URI pointing to a metadata file (file standard is up to the implementer)\"}},\"ledger()\":{\"details\":\"i.e., a registry or registrar, to be implemented in the future\",\"returns\":{\"_0\":\"the address of the contract or EOA that initialized the IP registration\"}},\"metadataURI()\":{\"returns\":{\"_0\":\"the URI of the current metadata file for the II P\"}},\"royaltyPortionTokens()\":{\"details\":\"i.e implementing ERC5501 (IRoyaltyInterestToken interface)\",\"returns\":{\"_0\":\"array of addresses of ERC20 tokens representing royalty portion in the IP\"}},\"supportsInterface(bytes4)\":{\"details\":\"Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"changeMetadataURI(string,string)\":{\"notice\":\"Called with the new URI to an updated metadata file\"},\"kind()\":{\"notice\":\"returns the kind of IP represented. i.e 'video', 'audio', 'image' or something else.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/musical-ip-5553/IIPRepresentation.sol\":\"IIPRepresentation\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"contracts/musical-ip-5553/IIPRepresentation.sol\":{\"keccak256\":\"0xa56eaeec32f2442febeb3eadbfcaee56c1b50a3b77249d3c23250abfec50ff9c\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://9a476a83530b4c7bf2b44f41249bedeb662a0386712639ba0242649ccaf08465\",\"dweb:/ipfs/QmcB2hoDT3c3zPoMUPH3vUW5GfYWrt2ZmTWmvF6xbZq9TE\"]},\"node_modules/@openzeppelin/contracts/interfaces/IERC165.sol\":{\"keccak256\":\"0xd04b0f06e0666f29cf7cccc82894de541e19bb30a765b107b1e40bb7fe5f7d7a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b652499d098e88d8d878374616bb58434301061cae2253298b3f374044e0ddb\",\"dweb:/ipfs/QmbhAzctqo5jrSKU6idHdVyqfmzCcDbNUPvmx4GiXxfA6q\"]},\"node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.15+commit.e14f2714"
@@ -330,7 +330,8 @@
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":eth-gas-reporter/=node_modules/eth-gas-reporter/",
         ":forge-std/=lib/forge-std/src/",
-        ":hardhat/=node_modules/hardhat/"
+        ":hardhat/=node_modules/hardhat/",
+        ":solmate/=lib/solmate/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -346,10 +347,10 @@
     },
     "sources": {
       "contracts/musical-ip-5553/IIPRepresentation.sol": {
-        "keccak256": "0xed62c6739aef68e499c1757be64137bffba02a66f44c4e1ee22fed4d4e7b2745",
+        "keccak256": "0xa56eaeec32f2442febeb3eadbfcaee56c1b50a3b77249d3c23250abfec50ff9c",
         "urls": [
-          "bzz-raw://3cc6bddf5686e98e4e964b6f46ba668dee9869be4e05107cb427ac734458bbd9",
-          "dweb:/ipfs/QmVjqKDt2np6At5x2tuszVb1BD5tp8jmGt5VFE2G2SQk4b"
+          "bzz-raw://9a476a83530b4c7bf2b44f41249bedeb662a0386712639ba0242649ccaf08465",
+          "dweb:/ipfs/QmcB2hoDT3c3zPoMUPH3vUW5GfYWrt2ZmTWmvF6xbZq9TE"
         ],
         "license": "Apache-2.0"
       },
@@ -374,22 +375,22 @@
   },
   "ast": {
     "absolutePath": "contracts/musical-ip-5553/IIPRepresentation.sol",
-    "id": 921,
+    "id": 1027,
     "exportedSymbols": {
       "IERC165": [
-        3522
+        25568
       ],
       "IIPRepresentation": [
-        920
+        1026
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "39:1846:7",
+    "src": "39:1832:8",
     "nodes": [
       {
-        "id": 869,
+        "id": 975,
         "nodeType": "PragmaDirective",
-        "src": "39:23:7",
+        "src": "39:23:8",
         "nodes": [],
         "literals": [
           "solidity",
@@ -399,32 +400,32 @@
         ]
       },
       {
-        "id": 870,
+        "id": 976,
         "nodeType": "ImportDirective",
-        "src": "63:56:7",
+        "src": "64:56:8",
         "nodes": [],
         "absolutePath": "node_modules/@openzeppelin/contracts/interfaces/IERC165.sol",
         "file": "@openzeppelin/contracts/interfaces/IERC165.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 921,
-        "sourceUnit": 1153,
+        "scope": 1027,
+        "sourceUnit": 23199,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 920,
+        "id": 1026,
         "nodeType": "ContractDefinition",
-        "src": "190:1691:7",
+        "src": "190:1680:8",
         "nodes": [
           {
-            "id": 879,
+            "id": 985,
             "nodeType": "FunctionDefinition",
-            "src": "341:49:7",
+            "src": "336:49:8",
             "nodes": [],
             "documentation": {
-              "id": 874,
+              "id": 980,
               "nodeType": "StructuredDocumentation",
-              "src": "240:96:7",
+              "src": "235:96:8",
               "text": "@notice returns the kind of IP represented. i.e 'video', 'audio', 'image' or something else."
             },
             "functionSelector": "04baa00b",
@@ -432,26 +433,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "kind",
-            "nameLocation": "350:4:7",
+            "nameLocation": "345:4:8",
             "parameters": {
-              "id": 875,
+              "id": 981,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "354:2:7"
+              "src": "349:2:8"
             },
             "returnParameters": {
-              "id": 878,
+              "id": 984,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 877,
+                  "id": 983,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 879,
-                  "src": "375:13:7",
+                  "scope": 985,
+                  "src": "370:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -459,10 +460,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 876,
+                    "id": 982,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "375:6:7",
+                    "src": "370:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -471,22 +472,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "374:15:7"
+              "src": "369:15:8"
             },
-            "scope": 920,
+            "scope": 1026,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 887,
+            "id": 993,
             "nodeType": "FunctionDefinition",
-            "src": "668:88:7",
+            "src": "663:87:8",
             "nodes": [],
             "documentation": {
-              "id": 880,
+              "id": 986,
               "nodeType": "StructuredDocumentation",
-              "src": "396:267:7",
+              "src": "391:267:8",
               "text": "@notice Called with the new URI to an updated metadata file\n @param _newUri - the URI pointing to a metadata file (file standard is up to the implementer)\n @param _newFileHash - The hash of the new metadata file for future reference and verification"
             },
             "functionSelector": "5655c6d9",
@@ -494,20 +495,20 @@
             "kind": "function",
             "modifiers": [],
             "name": "changeMetadataURI",
-            "nameLocation": "677:17:7",
+            "nameLocation": "672:17:8",
             "parameters": {
-              "id": 885,
+              "id": 991,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 882,
+                  "id": 988,
                   "mutability": "mutable",
                   "name": "_newUri",
-                  "nameLocation": "709:7:7",
+                  "nameLocation": "704:7:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 887,
-                  "src": "695:21:7",
+                  "scope": 993,
+                  "src": "690:21:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -515,10 +516,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 881,
+                    "id": 987,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "695:6:7",
+                    "src": "690:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -528,13 +529,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 884,
+                  "id": 990,
                   "mutability": "mutable",
                   "name": "_newFileHash",
-                  "nameLocation": "732:12:7",
+                  "nameLocation": "727:12:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 887,
-                  "src": "718:26:7",
+                  "scope": 993,
+                  "src": "713:26:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -542,10 +543,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 883,
+                    "id": 989,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "718:6:7",
+                    "src": "713:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -554,28 +555,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "694:51:7"
+              "src": "689:51:8"
             },
             "returnParameters": {
-              "id": 886,
+              "id": 992,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "755:0:7"
+              "src": "749:0:8"
             },
-            "scope": 920,
+            "scope": 1026,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 894,
+            "id": 1000,
             "nodeType": "FunctionDefinition",
-            "src": "924:74:7",
+            "src": "918:73:8",
             "nodes": [],
             "documentation": {
-              "id": 888,
+              "id": 994,
               "nodeType": "StructuredDocumentation",
-              "src": "762:157:7",
+              "src": "756:157:8",
               "text": "@return array of addresses of ERC20 tokens representing royalty portion in the IP\n @dev i.e implementing ERC5501 (IRoyaltyInterestToken interface)"
             },
             "functionSelector": "04f7b05c",
@@ -583,26 +584,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "royaltyPortionTokens",
-            "nameLocation": "933:20:7",
+            "nameLocation": "927:20:8",
             "parameters": {
-              "id": 889,
+              "id": 995,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "953:2:7"
+              "src": "947:2:8"
             },
             "returnParameters": {
-              "id": 893,
+              "id": 999,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 892,
+                  "id": 998,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 894,
-                  "src": "979:16:7",
+                  "scope": 1000,
+                  "src": "973:16:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -611,19 +612,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 890,
+                      "id": 996,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "979:7:7",
+                      "src": "973:7:8",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 891,
+                    "id": 997,
                     "nodeType": "ArrayTypeName",
-                    "src": "979:9:7",
+                    "src": "973:9:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -632,22 +633,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "978:18:7"
+              "src": "972:18:8"
             },
-            "scope": 920,
+            "scope": 1026,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 900,
+            "id": 1006,
             "nodeType": "FunctionDefinition",
-            "src": "1168:51:7",
+            "src": "1161:50:8",
             "nodes": [],
             "documentation": {
-              "id": 895,
+              "id": 1001,
               "nodeType": "StructuredDocumentation",
-              "src": "1004:159:7",
+              "src": "997:159:8",
               "text": "@return the address of the contract or EOA that initialized the IP registration\n @dev i.e., a registry or registrar, to be implemented in the future"
             },
             "functionSelector": "56397c35",
@@ -655,26 +656,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "ledger",
-            "nameLocation": "1177:6:7",
+            "nameLocation": "1170:6:8",
             "parameters": {
-              "id": 896,
+              "id": 1002,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1183:2:7"
+              "src": "1176:2:8"
             },
             "returnParameters": {
-              "id": 899,
+              "id": 1005,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 898,
+                  "id": 1004,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 900,
-                  "src": "1209:7:7",
+                  "scope": 1006,
+                  "src": "1202:7:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -682,10 +683,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 897,
+                    "id": 1003,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1209:7:7",
+                    "src": "1202:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -695,22 +696,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1208:9:7"
+              "src": "1201:9:8"
             },
-            "scope": 920,
+            "scope": 1026,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 906,
+            "id": 1012,
             "nodeType": "FunctionDefinition",
-            "src": "1291:62:7",
+            "src": "1283:61:8",
             "nodes": [],
             "documentation": {
-              "id": 901,
+              "id": 1007,
               "nodeType": "StructuredDocumentation",
-              "src": "1225:61:7",
+              "src": "1217:61:8",
               "text": "@return the URI of the current metadata file for the II P"
             },
             "functionSelector": "03ee438c",
@@ -718,26 +719,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "metadataURI",
-            "nameLocation": "1300:11:7",
+            "nameLocation": "1292:11:8",
             "parameters": {
-              "id": 902,
+              "id": 1008,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1311:2:7"
+              "src": "1303:2:8"
             },
             "returnParameters": {
-              "id": 905,
+              "id": 1011,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 904,
+                  "id": 1010,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 906,
-                  "src": "1337:13:7",
+                  "scope": 1012,
+                  "src": "1329:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -745,10 +746,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 903,
+                    "id": 1009,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1337:6:7",
+                    "src": "1329:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -757,42 +758,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1336:15:7"
+              "src": "1328:15:8"
             },
-            "scope": 920,
+            "scope": 1026,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 919,
+            "id": 1025,
             "nodeType": "EventDefinition",
-            "src": "1766:113:7",
+            "src": "1755:113:8",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 907,
+              "id": 1013,
               "nodeType": "StructuredDocumentation",
-              "src": "1359:402:7",
-              "text": "@dev event to be triggered whenever metadata URI is changed\n @param byAddress the addresses that triggered this operation\n @param oldURI the URI to the old metadata file before the change\n @param oldFileHash the hash of the old metadata file before the change\n @param newURI the URI to the new metadata file \n @param newFileHash the hash of the new metadata file "
+              "src": "1350:400:8",
+              "text": "@dev event to be triggered whenever metadata URI is changed\n @param byAddress the addresses that triggered this operation\n @param oldURI the URI to the old metadata file before the change\n @param oldFileHash the hash of the old metadata file before the change\n @param newURI the URI to the new metadata file\n @param newFileHash the hash of the new metadata file"
             },
             "eventSelector": "686f55766127c8792bd5c6f56acd7e5fe07523840b577d774dc2266c38463b1e",
             "name": "MetadaDataChanged",
-            "nameLocation": "1772:17:7",
+            "nameLocation": "1761:17:8",
             "parameters": {
-              "id": 918,
+              "id": 1024,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 909,
+                  "id": 1015,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "byAddress",
-                  "nameLocation": "1798:9:7",
+                  "nameLocation": "1787:9:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 919,
-                  "src": "1790:17:7",
+                  "scope": 1025,
+                  "src": "1779:17:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -800,10 +801,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 908,
+                    "id": 1014,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1790:7:7",
+                    "src": "1779:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -814,14 +815,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 911,
+                  "id": 1017,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "oldURI",
-                  "nameLocation": "1816:6:7",
+                  "nameLocation": "1805:6:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 919,
-                  "src": "1809:13:7",
+                  "scope": 1025,
+                  "src": "1798:13:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -829,10 +830,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 910,
+                    "id": 1016,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1809:6:7",
+                    "src": "1798:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -842,14 +843,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 913,
+                  "id": 1019,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "oldFileHash",
-                  "nameLocation": "1831:11:7",
+                  "nameLocation": "1820:11:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 919,
-                  "src": "1824:18:7",
+                  "scope": 1025,
+                  "src": "1813:18:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -857,10 +858,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 912,
+                    "id": 1018,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1824:6:7",
+                    "src": "1813:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -870,14 +871,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 915,
+                  "id": 1021,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newURI",
-                  "nameLocation": "1851:6:7",
+                  "nameLocation": "1840:6:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 919,
-                  "src": "1844:13:7",
+                  "scope": 1025,
+                  "src": "1833:13:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -885,10 +886,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 914,
+                    "id": 1020,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1844:6:7",
+                    "src": "1833:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -898,14 +899,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 917,
+                  "id": 1023,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newFileHash",
-                  "nameLocation": "1866:11:7",
+                  "nameLocation": "1855:11:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 919,
-                  "src": "1859:18:7",
+                  "scope": 1025,
+                  "src": "1848:18:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -913,10 +914,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 916,
+                    "id": 1022,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1859:6:7",
+                    "src": "1848:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -925,7 +926,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1789:89:7"
+              "src": "1778:89:8"
             }
           }
         ],
@@ -933,38 +934,38 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 872,
+              "id": 978,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3522,
-              "src": "221:7:7"
+              "referencedDeclaration": 25568,
+              "src": "221:7:8"
             },
-            "id": 873,
+            "id": 979,
             "nodeType": "InheritanceSpecifier",
-            "src": "221:7:7"
+            "src": "221:7:8"
           }
         ],
         "canonicalName": "IIPRepresentation",
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 871,
+          "id": 977,
           "nodeType": "StructuredDocumentation",
-          "src": "122:68:7",
+          "src": "122:68:8",
           "text": "\n @dev Interface for Intellectual Property Representation"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          920,
-          3522
+          1026,
+          25568
         ],
         "name": "IIPRepresentation",
-        "nameLocation": "200:17:7",
-        "scope": 921,
+        "nameLocation": "200:17:8",
+        "scope": 1027,
         "usedErrors": []
       }
     ],
     "license": "Apache-2.0"
   },
-  "id": 7
+  "id": 8
 }

@@ -95,7 +95,7 @@
     "max()": "6ac5db19",
     "parentWork()": "1683252d"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getHolders\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"struct Balance[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"kind\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ledger\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"max\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"parentWork\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getHolders()\":{\"details\":\"this array represt ALL past and current holders of the ERC20 underlying token,  with current active balance this takes some work but it helps discover all holders of a royalty interest in a single logical place. see example implementation of this in SongRegistration.sol\",\"returns\":{\"_0\":\"an array of Balance structs : Balance {address holder, uint256 amount}\"}},\"ledger()\":{\"details\":\"i.e a registery or registrar, to be implemented in the future\",\"returns\":{\"_0\":\"the address of the contract or EOA that initialized the work registration that is the parent of this royalty interest\"}},\"parentWork()\":{\"details\":\"there is a 1-many relationship between a work and royalty interest tokens  for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side a royalty interest token can only belong to a single work, and once bound, can never change a parent\",\"returns\":{\"_0\":\"the address of the parent work that this royalty interest is bound to\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"kind()\":{\"notice\":\"returns a string representing what kind of ROyalty interest this is.  i.e in the music business this might be \\\"Recording\\\" or \\\"Composition\\\" royalty interests\"},\"max()\":{\"notice\":\"returns a fixed amoutn of tokens that cannot be changed and represent 100% of the royalty interest for this token. i.e ideally you'd just return '100' here , where each token represents 1% of a royalty interest.\"}},\"notice\":\"an ERC20 that acts as a royalty interest token i.e we can use the holders of this token as a representation of who shoudl get how much % of any future money distribution in a licensing deal, for example\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IRoyaltyPortionToken.sol\":\"IRoyaltyPortionToken\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"contracts/interfaces/IRoyaltyPortionToken.sol\":{\"keccak256\":\"0xe04ae9a76e6e6cd0e3a83e46f69466c7d05a0f17be13c73125ca0404ce228813\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://b8642b8b97439b0901dcf4099614ab11890a914766eefa8458181c2d47a2f004\",\"dweb:/ipfs/QmYwZN5SrpWrbUjJg5QGXxQ3chGb9fzJT56ZXtjFMeQzbM\"]},\"contracts/interfaces/Structs.sol\":{\"keccak256\":\"0x4a651c3aea455e9b4cbd9b170af510697e6c2a69224e07c2dc2b2ed4a4e84e0b\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://ce93d02cb7a6742a15cdd14bcf4d8005b11dbe2291673ef4113d6ce2143f95f1\",\"dweb:/ipfs/QmbMFhJb8QYJFc4g6R7YwheL7Dgyq2gSrxQB36ZK8LzVFA\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getHolders\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"struct Balance[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"kind\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ledger\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"max\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"parentWork\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getHolders()\":{\"details\":\"this array represt ALL past and current holders of the ERC20 underlying token, with current active balance this takes some work but it helps discover all holders of a royalty interest in a single logical place. see example implementation of this in SongRegistration.sol\",\"returns\":{\"_0\":\"an array of Balance structs : Balance {address holder, uint256 amount}\"}},\"ledger()\":{\"details\":\"i.e a registery or registrar, to be implemented in the future\",\"returns\":{\"_0\":\"the address of the contract or EOA that initialized the work registration that is the parent of this royalty interest\"}},\"parentWork()\":{\"details\":\"there is a 1-many relationship between a work and royalty interest tokens for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side a royalty interest token can only belong to a single work, and once bound, can never change a parent\",\"returns\":{\"_0\":\"the address of the parent work that this royalty interest is bound to\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"kind()\":{\"notice\":\"returns a string representing what kind of ROyalty interest this is. i.e in the music business this might be \\\"Recording\\\" or \\\"Composition\\\" royalty interests\"},\"max()\":{\"notice\":\"returns a fixed amoutn of tokens that cannot be changed and represent 100% of the royalty interest for this token. i.e ideally you'd just return '100' here , where each token represents 1% of a royalty interest.\"}},\"notice\":\"an ERC20 that acts as a royalty interest token i.e we can use the holders of this token as a representation of who shoudl get how much % of any future money distribution in a licensing deal, for example\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IRoyaltyPortionToken.sol\":\"IRoyaltyPortionToken\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"contracts/interfaces/IRoyaltyPortionToken.sol\":{\"keccak256\":\"0x42b3120753c59a90bea6ef633babeb831001ea9120a9a88174710ec9006aaa36\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://3583e8c580f0df5e5fb6c9561dc378541e3e2a1eba88b3140de0fedd4eb832d7\",\"dweb:/ipfs/QmTT6LwEqfKyxAuidvRkaNBEs3hqcRpom8JNdrycQ2bDY9\"]},\"contracts/interfaces/Structs.sol\":{\"keccak256\":\"0x92cd5c464994b409bfd1285a0886ce8e1230a77319ecae51f3b5a32d428a931b\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://896ef8dfd31388528b6d3c9491e7162f318732c5fc1515b3b4559c4bad59e8c0\",\"dweb:/ipfs/QmZYc6txcEBSxacFUrQGBSzFo5fP5kYf5VHrY5YqNkUv8S\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.15+commit.e14f2714"
@@ -185,7 +185,7 @@
         "kind": "dev",
         "methods": {
           "getHolders()": {
-            "details": "this array represt ALL past and current holders of the ERC20 underlying token,  with current active balance this takes some work but it helps discover all holders of a royalty interest in a single logical place. see example implementation of this in SongRegistration.sol",
+            "details": "this array represt ALL past and current holders of the ERC20 underlying token, with current active balance this takes some work but it helps discover all holders of a royalty interest in a single logical place. see example implementation of this in SongRegistration.sol",
             "returns": {
               "_0": "an array of Balance structs : Balance {address holder, uint256 amount}"
             }
@@ -197,7 +197,7 @@
             }
           },
           "parentWork()": {
-            "details": "there is a 1-many relationship between a work and royalty interest tokens  for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side a royalty interest token can only belong to a single work, and once bound, can never change a parent",
+            "details": "there is a 1-many relationship between a work and royalty interest tokens for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side a royalty interest token can only belong to a single work, and once bound, can never change a parent",
             "returns": {
               "_0": "the address of the parent work that this royalty interest is bound to"
             }
@@ -209,7 +209,7 @@
         "kind": "user",
         "methods": {
           "kind()": {
-            "notice": "returns a string representing what kind of ROyalty interest this is.  i.e in the music business this might be \"Recording\" or \"Composition\" royalty interests"
+            "notice": "returns a string representing what kind of ROyalty interest this is. i.e in the music business this might be \"Recording\" or \"Composition\" royalty interests"
           },
           "max()": {
             "notice": "returns a fixed amoutn of tokens that cannot be changed and represent 100% of the royalty interest for this token. i.e ideally you'd just return '100' here , where each token represents 1% of a royalty interest."
@@ -224,7 +224,8 @@
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":eth-gas-reporter/=node_modules/eth-gas-reporter/",
         ":forge-std/=lib/forge-std/src/",
-        ":hardhat/=node_modules/hardhat/"
+        ":hardhat/=node_modules/hardhat/",
+        ":solmate/=lib/solmate/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -240,18 +241,18 @@
     },
     "sources": {
       "contracts/interfaces/IRoyaltyPortionToken.sol": {
-        "keccak256": "0xe04ae9a76e6e6cd0e3a83e46f69466c7d05a0f17be13c73125ca0404ce228813",
+        "keccak256": "0x42b3120753c59a90bea6ef633babeb831001ea9120a9a88174710ec9006aaa36",
         "urls": [
-          "bzz-raw://b8642b8b97439b0901dcf4099614ab11890a914766eefa8458181c2d47a2f004",
-          "dweb:/ipfs/QmYwZN5SrpWrbUjJg5QGXxQ3chGb9fzJT56ZXtjFMeQzbM"
+          "bzz-raw://3583e8c580f0df5e5fb6c9561dc378541e3e2a1eba88b3140de0fedd4eb832d7",
+          "dweb:/ipfs/QmTT6LwEqfKyxAuidvRkaNBEs3hqcRpom8JNdrycQ2bDY9"
         ],
         "license": "Apache-2.0"
       },
       "contracts/interfaces/Structs.sol": {
-        "keccak256": "0x4a651c3aea455e9b4cbd9b170af510697e6c2a69224e07c2dc2b2ed4a4e84e0b",
+        "keccak256": "0x92cd5c464994b409bfd1285a0886ce8e1230a77319ecae51f3b5a32d428a931b",
         "urls": [
-          "bzz-raw://ce93d02cb7a6742a15cdd14bcf4d8005b11dbe2291673ef4113d6ce2143f95f1",
-          "dweb:/ipfs/QmbMFhJb8QYJFc4g6R7YwheL7Dgyq2gSrxQB36ZK8LzVFA"
+          "bzz-raw://896ef8dfd31388528b6d3c9491e7162f318732c5fc1515b3b4559c4bad59e8c0",
+          "dweb:/ipfs/QmZYc6txcEBSxacFUrQGBSzFo5fP5kYf5VHrY5YqNkUv8S"
         ],
         "license": "Apache-2.0"
       }
@@ -260,34 +261,34 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/IRoyaltyPortionToken.sol",
-    "id": 824,
+    "id": 930,
     "exportedSymbols": {
       "Balance": [
-        830
+        936
       ],
       "IRoyaltyPortionToken": [
-        823
+        929
       ],
       "RoyaltyTokenData": [
-        855
+        961
       ],
       "SongMintingParams": [
-        867
+        973
       ],
       "SplitInfo": [
-        846
+        952
       ],
       "SplitTarget": [
-        837
+        943
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "39:2071:5",
+    "src": "39:2060:6",
     "nodes": [
       {
-        "id": 788,
+        "id": 894,
         "nodeType": "PragmaDirective",
-        "src": "39:23:5",
+        "src": "39:23:6",
         "nodes": [],
         "literals": [
           "solidity",
@@ -297,59 +298,59 @@
         ]
       },
       {
-        "id": 789,
+        "id": 895,
         "nodeType": "ImportDirective",
-        "src": "63:23:5",
+        "src": "64:23:6",
         "nodes": [],
         "absolutePath": "contracts/interfaces/Structs.sol",
         "file": "./Structs.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 824,
-        "sourceUnit": 868,
+        "scope": 930,
+        "sourceUnit": 974,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 823,
+        "id": 929,
         "nodeType": "ContractDefinition",
-        "src": "308:1798:5",
+        "src": "309:1789:6",
         "nodes": [
           {
-            "id": 796,
+            "id": 902,
             "nodeType": "FunctionDefinition",
-            "src": "526:55:5",
+            "src": "526:54:6",
             "nodes": [],
             "documentation": {
-              "id": 791,
+              "id": 897,
               "nodeType": "StructuredDocumentation",
-              "src": "345:176:5",
-              "text": "@notice returns a string representing what kind of ROyalty interest this is. \n i.e in the music business this might be \"Recording\" or \"Composition\" royalty interests"
+              "src": "346:175:6",
+              "text": "@notice returns a string representing what kind of ROyalty interest this is.\n i.e in the music business this might be \"Recording\" or \"Composition\" royalty interests"
             },
             "functionSelector": "04baa00b",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "kind",
-            "nameLocation": "535:4:5",
+            "nameLocation": "535:4:6",
             "parameters": {
-              "id": 792,
+              "id": 898,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "539:2:5"
+              "src": "539:2:6"
             },
             "returnParameters": {
-              "id": 795,
+              "id": 901,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 794,
+                  "id": 900,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 796,
-                  "src": "565:13:5",
+                  "scope": 902,
+                  "src": "565:13:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -357,10 +358,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 793,
+                    "id": 899,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "565:6:5",
+                    "src": "565:6:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -369,22 +370,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "564:15:5"
+              "src": "564:15:6"
             },
-            "scope": 823,
+            "scope": 929,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 802,
+            "id": 908,
             "nodeType": "FunctionDefinition",
-            "src": "823:48:5",
+            "src": "822:47:6",
             "nodes": [],
             "documentation": {
-              "id": 797,
+              "id": 903,
               "nodeType": "StructuredDocumentation",
-              "src": "587:231:5",
+              "src": "586:231:6",
               "text": "@notice returns a fixed amoutn of tokens that cannot be changed and represent 100% of the royalty interest for this token.\n i.e ideally you'd just return '100' here , where each token represents 1% of a royalty interest."
             },
             "functionSelector": "6ac5db19",
@@ -392,26 +393,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "max",
-            "nameLocation": "832:3:5",
+            "nameLocation": "831:3:6",
             "parameters": {
-              "id": 798,
+              "id": 904,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "835:2:5"
+              "src": "834:2:6"
             },
             "returnParameters": {
-              "id": 801,
+              "id": 907,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 800,
+                  "id": 906,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 802,
-                  "src": "861:7:5",
+                  "scope": 908,
+                  "src": "860:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -419,10 +420,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 799,
+                    "id": 905,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "861:7:5",
+                    "src": "860:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -431,22 +432,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "860:9:5"
+              "src": "859:9:6"
             },
-            "scope": 823,
+            "scope": 929,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 808,
+            "id": 914,
             "nodeType": "FunctionDefinition",
-            "src": "1086:51:5",
+            "src": "1084:50:6",
             "nodes": [],
             "documentation": {
-              "id": 803,
+              "id": 909,
               "nodeType": "StructuredDocumentation",
-              "src": "877:204:5",
+              "src": "875:204:6",
               "text": "@return the address of the contract or EOA that initialized the work registration that is the parent of this royalty interest\n @dev i.e a registery or registrar, to be implemented in the future"
             },
             "functionSelector": "56397c35",
@@ -454,26 +455,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "ledger",
-            "nameLocation": "1095:6:5",
+            "nameLocation": "1093:6:6",
             "parameters": {
-              "id": 804,
+              "id": 910,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1101:2:5"
+              "src": "1099:2:6"
             },
             "returnParameters": {
-              "id": 807,
+              "id": 913,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 806,
+                  "id": 912,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 808,
-                  "src": "1127:7:5",
+                  "scope": 914,
+                  "src": "1125:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -481,10 +482,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 805,
+                    "id": 911,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1127:7:5",
+                    "src": "1125:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -494,49 +495,49 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1126:9:5"
+              "src": "1124:9:6"
             },
-            "scope": 823,
+            "scope": 929,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 814,
+            "id": 920,
             "nodeType": "FunctionDefinition",
-            "src": "1583:55:5",
+            "src": "1579:54:6",
             "nodes": [],
             "documentation": {
-              "id": 809,
+              "id": 915,
               "nodeType": "StructuredDocumentation",
-              "src": "1143:435:5",
-              "text": "@return the address of the parent work that this royalty interest is bound to\n @dev there is a 1-many relationship between a work and royalty interest tokens \n for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side\n a royalty interest token can only belong to a single work, and once bound, can never change a parent"
+              "src": "1140:434:6",
+              "text": "@return the address of the parent work that this royalty interest is bound to\n @dev there is a 1-many relationship between a work and royalty interest tokens\n for example, 1 song work, might have two royualty interest tokens, one representing the writing side,and another token representing a recording side\n a royalty interest token can only belong to a single work, and once bound, can never change a parent"
             },
             "functionSelector": "1683252d",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "parentWork",
-            "nameLocation": "1592:10:5",
+            "nameLocation": "1588:10:6",
             "parameters": {
-              "id": 810,
+              "id": 916,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1602:2:5"
+              "src": "1598:2:6"
             },
             "returnParameters": {
-              "id": 813,
+              "id": 919,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 812,
+                  "id": 918,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 814,
-                  "src": "1628:7:5",
+                  "scope": 920,
+                  "src": "1624:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -544,10 +545,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 811,
+                    "id": 917,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1628:7:5",
+                    "src": "1624:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -557,87 +558,87 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1627:9:5"
+              "src": "1623:9:6"
             },
-            "scope": 823,
+            "scope": 929,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 822,
+            "id": 928,
             "nodeType": "FunctionDefinition",
-            "src": "2040:64:5",
+            "src": "2033:63:6",
             "nodes": [],
             "documentation": {
-              "id": 815,
+              "id": 921,
               "nodeType": "StructuredDocumentation",
-              "src": "1645:390:5",
-              "text": "@return an array of Balance structs : Balance {address holder, uint256 amount}\n @dev this array represt ALL past and current holders of the ERC20 underlying token, \n with current active balance\n this takes some work but it helps discover all holders of a royalty interest in a single logical place.\n see example implementation of this in SongRegistration.sol"
+              "src": "1639:389:6",
+              "text": "@return an array of Balance structs : Balance {address holder, uint256 amount}\n @dev this array represt ALL past and current holders of the ERC20 underlying token,\n with current active balance\n this takes some work but it helps discover all holders of a royalty interest in a single logical place.\n see example implementation of this in SongRegistration.sol"
             },
             "functionSelector": "5fe8e7cc",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getHolders",
-            "nameLocation": "2049:10:5",
+            "nameLocation": "2042:10:6",
             "parameters": {
-              "id": 816,
+              "id": 922,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2059:2:5"
+              "src": "2052:2:6"
             },
             "returnParameters": {
-              "id": 821,
+              "id": 927,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 820,
+                  "id": 926,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 822,
-                  "src": "2085:16:5",
+                  "scope": 928,
+                  "src": "2078:16:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Balance_$830_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Balance_$936_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct Balance[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 818,
+                      "id": 924,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 817,
+                        "id": 923,
                         "name": "Balance",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 830,
-                        "src": "2085:7:5"
+                        "referencedDeclaration": 936,
+                        "src": "2078:7:6"
                       },
-                      "referencedDeclaration": 830,
-                      "src": "2085:7:5",
+                      "referencedDeclaration": 936,
+                      "src": "2078:7:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Balance_$830_storage_ptr",
+                        "typeIdentifier": "t_struct$_Balance_$936_storage_ptr",
                         "typeString": "struct Balance"
                       }
                     },
-                    "id": 819,
+                    "id": 925,
                     "nodeType": "ArrayTypeName",
-                    "src": "2085:9:5",
+                    "src": "2078:9:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Balance_$830_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Balance_$936_storage_$dyn_storage_ptr",
                       "typeString": "struct Balance[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "2084:18:5"
+              "src": "2077:18:6"
             },
-            "scope": 823,
+            "scope": 929,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -649,22 +650,22 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 790,
+          "id": 896,
           "nodeType": "StructuredDocumentation",
-          "src": "88:220:5",
+          "src": "89:220:6",
           "text": "@notice  an ERC20 that acts as a royalty interest token\n i.e we can use the holders of this token as a representation of who shoudl get how much % of any future money distribution in a licensing deal, for example"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          823
+          929
         ],
         "name": "IRoyaltyPortionToken",
-        "nameLocation": "318:20:5",
-        "scope": 824,
+        "nameLocation": "319:20:6",
+        "scope": 930,
         "usedErrors": []
       }
     ],
     "license": "Apache-2.0"
   },
-  "id": 5
+  "id": 6
 }
