@@ -28,7 +28,7 @@ contract SongLedger is IERC721Receiver {
         owner = _owner;
     }
 
-    function mintSong(SongMintingParams memory _params) public onlyOwner {
+    function mintSong(SongMintingParams memory _params) public onlyOwner returns(address) {
         string memory compName = string(abi.encode("Composition Royalties for ", _params.shortName));
         string memory compSymbol = string(abi.encode("comp-", _params.symbol));
 
@@ -56,6 +56,7 @@ contract SongLedger is IERC721Receiver {
         distribute(address(rec), _params.splits.recSplits, address(newSong));
 
         emit NewSong(address(newSong), _params.shortName, _params.symbol, address(comp), address(rec), address(this));
+        return address(newSong);
     }
 
     function distribute(address _tokenAddress, SplitTarget[] memory _targets, address _songAddress) private {

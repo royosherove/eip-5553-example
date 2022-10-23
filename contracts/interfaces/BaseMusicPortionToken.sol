@@ -6,31 +6,36 @@ import "./IRoyaltyPortionToken.sol";
 
 contract BaseMusicPortionToken is ERC20, IRoyaltyPortionToken {
     event SongBinding(address ledger, address token, address song, uint256 amount, string kind);
+    event HolderAdded(address holder, uint256 amount);
 
     string public kind;
     address public parentWork;
     address public ledger;
 
-    address public firstHolder;
-    Balance[] private holders;
-    mapping(address => uint256) addressIndexes;
+    Balance[] public holders;
+    mapping(address => uint256) addressLocation;
 
-    function updateBalances(address forHolder) private {
-        if (addressIndexes[forHolder] == 0 && forHolder != firstHolder) {
-            Balance memory b;
-            b.holder = forHolder;
-            b.amount = balanceOf(forHolder);
-            holders.push(b);
-            addressIndexes[forHolder] = holders.length - 1;
-            firstHolder = holders[0].holder; // prevents an if at the start of the function and in this line.
+    function updateBalances(address _address) private {
+        if (_address==address(0) ){
+            return;
+        }
+        uint256 foundIndex = addressLocation[address(_address)];
+        if ((foundIndex== 0 && holders.length==0) || (foundIndex==0 && holders[0].holder!=_address)){
+            uint256 balance = balanceOf(_address);
+            
+            holders.push(Balance({holder:_address,amount:balance}));
+            
+            addressLocation[_address] = holders.length-1;//// we do NOT UPDATE ADDRESS INDEXES LATER FOR OTHERS
+            emit HolderAdded(_address,balance);
         } else {
-            holders[addressIndexes[forHolder]].amount = balanceOf(forHolder);
+            holders[addressLocation[_address]].amount = balanceOf(_address);
         }
     }
 
     function transfer(address to, uint256 amount) public override returns (bool) {
         bool result = super.transfer(to, amount);
         require(result, "transfer failed");
+        updateBalances(_msgSender());
         updateBalances(to);
         return true;
     }

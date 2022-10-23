@@ -5,6 +5,8 @@ coverage
 coverage.json
 typechain
 typechain-types
+out
+forge-cache
 
 #Hardhat files
 cache
